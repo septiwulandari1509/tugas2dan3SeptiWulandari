@@ -135,7 +135,7 @@ class Students {
         global $conn;
         $sql = "UPDATE students SET name = ?, email = ?, role_fk = ? WHERE id = ? " . $clause . ";";
         $stmt = $conn->prepare($sql);
-        #$stmt->bind_param('issi', $name, $email, $role_fk, $id);#
+        $stmt->bind_param('issi', $name, $email, $role_fk, $id);
         $stmt->execute();
         $result = $stmt->affected_rows > 0 ? true : false;
         return $result;
